@@ -38,7 +38,6 @@ function createPost(post){
             }
 
 
-
         }, 1000);
 
     })
@@ -47,7 +46,19 @@ function createPost(post){
 }
 
 
-createPost({ title: 'Post Four', body: 'This is post four' })
-.then(getPosts)
-.catch(err => console.error(err));
+// createPost({ title: 'Post Four', body: 'This is post four' })
+// .then(getPosts)
+// .catch(err => console.error(err));
 
+const promise1 = Promise.resolve('Hello World');
+const promise2 = 10;
+const promise3 = new Promise((resolve, reject) => setTimeout(resolve,2000 ,'Goodbye'));
+
+
+const promise4 = fetch('https://jsonplaceholder.typicode.com/users')
+                .then(res => res.json())
+                .then(json => console.table(json));
+
+
+
+Promise.all([promise1, promise2, promise3]).then(value => console.log(value));
